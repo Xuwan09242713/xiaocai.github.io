@@ -316,15 +316,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%84%9A%E6%9C%AC/" target="_self">
-          运维脚本
+        <a href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" target="_self">
+          运维命令
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%84%9A%E6%9C%AC/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" target="_self">
         <div>
-          关于脚本​		这是我日常生活中写的一些脚本，自己也会经常用到，主要是对于一些应用的部署，也是非常简单的，这里的脚本我也会经常更新，写出更好的脚本 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768
+          关于运维命令​		这是我日常生活中写的命令，自己也会经常用到，经常会忘记，所以直接收集起来，ctrl+f 搜索，就非常方便，也是非常简单的，这里的命令我也会经常更新，写出更多的命令 12345678910111213141516171819202122232425262728293031323334353637383940414243mysql -uroot -p123 coordination
         </div>
       </a>
 
@@ -377,15 +377,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" target="_self">
-          运维命令
+        <a href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%84%9A%E6%9C%AC/" target="_self">
+          运维脚本
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%84%9A%E6%9C%AC/" target="_self">
         <div>
-          关于运维命令​		这是我日常生活中写的命令，自己也会经常用到，经常会忘记，所以直接收集起来，ctrl+f 搜索，就非常方便，也是非常简单的，这里的命令我也会经常更新，写出更多的命令 12345678910111213141516171819202122232425262728293031323334353637383940414243mysql -uroot -p123 coordination
+          关于脚本​		这是我日常生活中写的一些脚本，自己也会经常用到，主要是对于一些应用的部署，也是非常简单的，这里的脚本我也会经常更新，写出更好的脚本 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768
         </div>
       </a>
 
@@ -551,7 +551,7 @@ var now = new Date();
 
 function createtime() {
     //此处修改你的建站时间或者网站上线时间
-    var grt = new Date('08/07/2023 11:00:00');
+    var grt = new Date("08/07/2023 11:37:00");
     now.setTime(now.getTime() + 250);
     days = (now - grt) / 1000 / 60 / 60 / 24;
 
@@ -637,39 +637,6 @@ setInterval("createtime()", 250);
 
   
   
-</div>
-
-
-<div>
-  <span id="timeDate">载入天数...</span>
-  <span id="times">载入时分秒...</span>
-  <script>
-  var now = new Date();
-  function createtime(){
-      var grt= new Date("08/04/2023 16:55:00");
-      now.setTime(now.getTime()+250);
-      days = (now - grt ) / 1000 / 60 / 60 / 24;
-      dnum = Math.floor(days);
-      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-      hnum = Math.floor(hours);
-      if(String(hnum).length ==1 ){
-          hnum = "0" + hnum;
-      }
-      minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-      mnum = Math.floor(minutes);
-      if(String(mnum).length ==1 ){
-                mnum = "0" + mnum;
-      }
-      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-      snum = Math.round(seconds);
-      if(String(snum).length ==1 ){
-                snum = "0" + snum;
-      }
-      document.getElementById("timeDate").innerHTML = "🚀 for&nbsp"+dnum+"&nbspdays";
-      document.getElementById("times").innerHTML = hnum + "&nbsphr&nbsp" + mnum + "&nbspmin&nbsp" + snum + "&nbspsec";
-  }
-  setInterval("createtime()",250);
-  </script>
 </div>
 
   </footer>
