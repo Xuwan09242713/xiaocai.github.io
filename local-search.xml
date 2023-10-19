@@ -29,31 +29,6 @@
   
   
   <entry>
-    <title>运维命令</title>
-    <link href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/"/>
-    <url>/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</url>
-    
-    <content type="html"><![CDATA[<h4 id="关于运维命令"><a href="#关于运维命令" class="headerlink" title="关于运维命令"></a>关于运维命令</h4><p>​这是我日常生活中写的命令，自己也会经常用到，经常会忘记，所以直接收集起来，ctrl+f 搜索，就非常方便，也是非常简单的，这里的命令我也会经常更新，写出更多的命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql -uroot -p123 coordination  &lt; db_backuo.sql<span class="hljs-comment"># 数据导入数据库</span><br>mysqldump -usa -pabcd1234<span class="hljs-comment">## coordination &gt; db_backuo.sql# 把数据库的数据导成sql语句</span><br>GRANT ALL PRIVILEGES ON *.* TO <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> IDENTIFIED BY <span class="hljs-string">&#x27;mypassword&#x27;</span> WITH GRANT OPTION; <span class="hljs-comment"># 授权root用户获得远程连接的权限</span><br>scp db_backuo.sql 10.0.9.86:/haha/<span class="hljs-comment"># 远程拷贝</span><br>docker  <span class="hljs-built_in">cp</span> bc6c1dcd0664:/db_backuo.sql /root/<span class="hljs-comment"># 容器ip、容器文件路径、拷贝文件路径 拷贝容器文件</span><br>docker <span class="hljs-built_in">exec</span> -it bc6c1dcd0664  bash<span class="hljs-comment">#进入容器</span><br>find /usr/local/tomcat/webapps/admin/WEB-INF/classes -name <span class="hljs-string">&#x27;*.yml&#x27;</span> -<span class="hljs-built_in">exec</span> grep -Hn <span class="hljs-string">&#x27;10.0.9.6:3306&#x27;</span> &#123;&#125; \;<span class="hljs-comment"># 搜索以.yml结尾包含10.0.9.6:3306的文件</span><br>/data/xt/www/node_modules/.bin/nuxt build<span class="hljs-comment"># 构建node的文件环境</span><br>npm install vue-template-compiler<span class="hljs-comment"># 安装node启动环境</span><br>npm install vue<br>npm install vue-loader@latest --save-dev<br>npm install vue@2.7.14<span class="hljs-comment"># 指定安装版本的脚手架</span><br>/data/xt/www/node_modules/.bin/nuxt start<span class="hljs-comment"># 启动node</span><br>PATH=/usr/local/jdk1.8.0_341/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin<br><span class="hljs-comment"># 重新定义java环境</span><br>npm install pm2 <span class="hljs-comment"># 安装pm2</span><br>pm2 start /data/xt/www/node_modules/.bin/nuxt<span class="hljs-comment"># pm2的启动方式</span><br><span class="hljs-built_in">ln</span> -s /data/node-v14.15.0-linux-x64/ /data/node<span class="hljs-comment"># 软连接</span><br>netstat -nltp<span class="hljs-comment"># 查看进程号</span><br>ps -ef | grep 进程号<span class="hljs-comment"># 查看对于进程</span><br>docker run -itd  --name nginx-prod -p 443:443 -p 80:80 -p 81:81 --network host -v /data/nginx/logs:/var/log/nginx/logs -v /data/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf -v /data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v /data/nginx/certs:/etc/nginx/certs  docker.io/nginx:1.22 <span class="hljs-comment"># -itd可以进入容器，容器并在后台运行、名称、映射端口、指定容器网络连接方式、映射文件数据，数据持久化、命令将会从 Docker Hub 的公共 Registry 下载镜像，为nginx1.22的版本</span><br>GRANT ALL PRIVILEGES ON *.* TO <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;10.0.9.86&#x27;</span> IDENTIFIED BY <span class="hljs-string">&#x27;123&#x27;</span>;<br>CREATE USER <span class="hljs-string">&#x27;sa&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="hljs-string">&#x27;abcd1234##&#x27;</span>;<br><span class="hljs-keyword">select</span> * from tmp_t_productChkDetailed  <span class="hljs-built_in">limit</span> 10;<span class="hljs-comment"># 查询表中任意10条数据</span><br>SELECT User, Host FROM mysql.user;<span class="hljs-comment"># 查看数据库的用户和连接的主机</span><br>show grants <span class="hljs-keyword">for</span> root@<span class="hljs-string">&#x27;localhost&#x27;</span>;<span class="hljs-comment"># 查看root用户和对应的权限</span><br>show variables like <span class="hljs-string">&#x27;%max_connect%&#x27;</span>;<span class="hljs-comment"># 查看连接数</span><br><span class="hljs-built_in">set</span> global max_connect_errors = 500;<span class="hljs-comment"># 设置错误连接数</span><br><span class="hljs-built_in">set</span> global max_connect = 500;<span class="hljs-comment"># 设置连接数</span><br>flush privileges;<span class="hljs-comment"># 刷新数据</span><br><span class="hljs-built_in">echo</span> xiaocai@123 | passwd --stdin root<span class="hljs-comment"># 修改用户名密码</span><br><span class="hljs-built_in">nohup</span> npm run start-dev &amp;<span class="hljs-comment"># 后台启动node并写入日志</span><br>journalctl -xe<span class="hljs-comment"># 查看系统日志</span><br><span class="hljs-built_in">nohup</span> npm run start-dev &gt; my.log 2&gt;my.log &amp;<span class="hljs-comment"># 后台启动保留错误日志导my.log</span><br><span class="hljs-built_in">echo</span> xiaocai | passwd --stdin root <span class="hljs-comment"># 实验环境的机器</span><br>ssh-keygen<span class="hljs-comment"># 对主机进行秘钥生产</span><br>ssh-copy-id root@10.0.9.231<span class="hljs-comment"># 把秘钥发给其他主机，实现远程免密登录</span><br>:<span class="hljs-built_in">set</span> <span class="hljs-built_in">paste</span><span class="hljs-comment"># 和粘贴的内容保持一致</span><br>wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.8.0-x86_64.rpm<span class="hljs-comment"># 下载es链接</span><br>hostnamectl<span class="hljs-comment"># 查看系统信息</span><br>/usr/share/nginx/html/index.html<span class="hljs-comment"># nginx默认页面路径</span><br>yumdownloader --resolve --destdir=. unzip<span class="hljs-comment"># 下载软件包和依赖包到当前目录下</span><br>telnet 10.0.9.228 9200<span class="hljs-comment"># 检查对应主机的端口是否正常运行</span><br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>运维</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>学习</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>关于篮球</title>
     <link href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E7%AF%AE%E7%90%83/"/>
     <url>/2023/08/07/%E5%8D%9A%E5%AE%A2-%E7%AF%AE%E7%90%83/</url>
@@ -79,6 +54,31 @@
   
   
   <entry>
+    <title>运维命令</title>
+    <link href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/"/>
+    <url>/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</url>
+    
+    <content type="html"><![CDATA[<h4 id="关于运维命令"><a href="#关于运维命令" class="headerlink" title="关于运维命令"></a>关于运维命令</h4><p>​这是我日常生活中写的命令，自己也会经常用到，经常会忘记，所以直接收集起来，ctrl+f 搜索，就非常方便，也是非常简单的，这里的命令我也会经常更新，写出更多的命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql -uroot -p123 coordination  &lt; db_backuo.sql<span class="hljs-comment"># 数据导入数据库</span><br>mysqldump -usa -pabcd1234<span class="hljs-comment">## coordination &gt; db_backuo.sql# 把数据库的数据导成sql语句</span><br>GRANT ALL PRIVILEGES ON *.* TO <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> IDENTIFIED BY <span class="hljs-string">&#x27;mypassword&#x27;</span> WITH GRANT OPTION; <span class="hljs-comment"># 授权root用户获得远程连接的权限</span><br>scp db_backuo.sql 10.0.9.86:/haha/<span class="hljs-comment"># 远程拷贝</span><br>docker  <span class="hljs-built_in">cp</span> bc6c1dcd0664:/db_backuo.sql /root/<span class="hljs-comment"># 容器ip、容器文件路径、拷贝文件路径 拷贝容器文件</span><br>docker <span class="hljs-built_in">exec</span> -it bc6c1dcd0664  bash<span class="hljs-comment">#进入容器</span><br>find /usr/local/tomcat/webapps/admin/WEB-INF/classes -name <span class="hljs-string">&#x27;*.yml&#x27;</span> -<span class="hljs-built_in">exec</span> grep -Hn <span class="hljs-string">&#x27;10.0.9.6:3306&#x27;</span> &#123;&#125; \;<span class="hljs-comment"># 搜索以.yml结尾包含10.0.9.6:3306的文件</span><br>/data/xt/www/node_modules/.bin/nuxt build<span class="hljs-comment"># 构建node的文件环境</span><br>npm install vue-template-compiler<span class="hljs-comment"># 安装node启动环境</span><br>npm install vue<br>npm install vue-loader@latest --save-dev<br>npm install vue@2.7.14<span class="hljs-comment"># 指定安装版本的脚手架</span><br>/data/xt/www/node_modules/.bin/nuxt start<span class="hljs-comment"># 启动node</span><br>PATH=/usr/local/jdk1.8.0_341/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin<br><span class="hljs-comment"># 重新定义java环境</span><br>npm install pm2 <span class="hljs-comment"># 安装pm2</span><br>pm2 start /data/xt/www/node_modules/.bin/nuxt<span class="hljs-comment"># pm2的启动方式</span><br><span class="hljs-built_in">ln</span> -s /data/node-v14.15.0-linux-x64/ /data/node<span class="hljs-comment"># 软连接</span><br>netstat -nltp<span class="hljs-comment"># 查看进程号</span><br>ps -ef | grep 进程号<span class="hljs-comment"># 查看对于进程</span><br>docker run -itd  --name nginx-prod -p 443:443 -p 80:80 -p 81:81 --network host -v /data/nginx/logs:/var/log/nginx/logs -v /data/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf -v /data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v /data/nginx/certs:/etc/nginx/certs  docker.io/nginx:1.22 <span class="hljs-comment"># -itd可以进入容器，容器并在后台运行、名称、映射端口、指定容器网络连接方式、映射文件数据，数据持久化、命令将会从 Docker Hub 的公共 Registry 下载镜像，为nginx1.22的版本</span><br>GRANT ALL PRIVILEGES ON *.* TO <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;10.0.9.86&#x27;</span> IDENTIFIED BY <span class="hljs-string">&#x27;123&#x27;</span>;<br>CREATE USER <span class="hljs-string">&#x27;sa&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="hljs-string">&#x27;abcd1234##&#x27;</span>;<br><span class="hljs-keyword">select</span> * from tmp_t_productChkDetailed  <span class="hljs-built_in">limit</span> 10;<span class="hljs-comment"># 查询表中任意10条数据</span><br>SELECT User, Host FROM mysql.user;<span class="hljs-comment"># 查看数据库的用户和连接的主机</span><br>show grants <span class="hljs-keyword">for</span> root@<span class="hljs-string">&#x27;localhost&#x27;</span>;<span class="hljs-comment"># 查看root用户和对应的权限</span><br>show variables like <span class="hljs-string">&#x27;%max_connect%&#x27;</span>;<span class="hljs-comment"># 查看连接数</span><br><span class="hljs-built_in">set</span> global max_connect_errors = 500;<span class="hljs-comment"># 设置错误连接数</span><br><span class="hljs-built_in">set</span> global max_connect = 500;<span class="hljs-comment"># 设置连接数</span><br>flush privileges;<span class="hljs-comment"># 刷新数据</span><br><span class="hljs-built_in">echo</span> xiaocai@123 | passwd --stdin root<span class="hljs-comment"># 修改用户名密码</span><br><span class="hljs-built_in">nohup</span> npm run start-dev &amp;<span class="hljs-comment"># 后台启动node并写入日志</span><br>journalctl -xe<span class="hljs-comment"># 查看系统日志</span><br><span class="hljs-built_in">nohup</span> npm run start-dev &gt; my.log 2&gt;my.log &amp;<span class="hljs-comment"># 后台启动保留错误日志导my.log</span><br><span class="hljs-built_in">echo</span> xiaocai | passwd --stdin root <span class="hljs-comment"># 实验环境的机器</span><br>ssh-keygen<span class="hljs-comment"># 对主机进行秘钥生产</span><br>ssh-copy-id root@10.0.9.231<span class="hljs-comment"># 把秘钥发给其他主机，实现远程免密登录</span><br>:<span class="hljs-built_in">set</span> <span class="hljs-built_in">paste</span><span class="hljs-comment"># 和粘贴的内容保持一致</span><br>wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.8.0-x86_64.rpm<span class="hljs-comment"># 下载es链接</span><br>hostnamectl<span class="hljs-comment"># 查看系统信息</span><br>/usr/share/nginx/html/index.html<span class="hljs-comment"># nginx默认页面路径</span><br>yumdownloader --resolve --destdir=. unzip<span class="hljs-comment"># 下载软件包和依赖包到当前目录下</span><br>telnet 10.0.9.228 9200<span class="hljs-comment"># 检查对应主机的端口是否正常运行</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>运维</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>运维脚本</title>
     <link href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%84%9A%E6%9C%AC/"/>
     <url>/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%84%9A%E6%9C%AC/</url>
@@ -96,6 +96,31 @@
     <tags>
       
       <tag>学习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>即兴而写</title>
+    <link href="/2021/06/10/%E5%8D%9A%E5%AE%A2-%E5%8D%B3%E5%85%B4%E8%80%8C%E5%86%99/"/>
+    <url>/2021/06/10/%E5%8D%9A%E5%AE%A2-%E5%8D%B3%E5%85%B4%E8%80%8C%E5%86%99/</url>
+    
+    <content type="html"><![CDATA[<h4 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h4><p>​对于我的童年很模糊，很多记忆都记不清楚了，我的童年似乎不太好但是也还可以，那时候没有电脑手机也很少，在村里大家都会出来逛，家家户户都有小孩，很热闹，以前很喜欢过年，人很多很热闹，觉得过年很快乐，过年的那天晚上可以玩通宵，我记得有一年，很晚，还在放烟花，那一年的烟花很大，仿佛伸手就能触摸，给我一种很恍惚，时间交错的感觉，后面的过年生活就越来越平淡了，时间过的很快，一转眼20年就过去了，长大的时间总是很快</p><h4 id="–"><a href="#–" class="headerlink" title="–"></a>–</h4><p>​对于我来说的话，朋友是人生中最重要的东西，但是我失去了，年轻的时候脾气很暴躁，总是控制不住自己，总是觉得自己已经做得足够好了，但是伤害了自己的朋友，我对自己很失望，最后联系就越来越少了，其实越长大，才发现朋友的重要性，发现其实找一个能玩得来的朋友太难了，人生总是很多遗憾，总是会后悔，有一句话说的话，青春总是遗憾的，有几个好朋友对于我的生活真的太重要了，直到现在才明白，太晚了，在高中时，有一种感觉特别深刻，我在高一的时候在窗边望着高三教室的窗边，我在高三的窗边望着高一的窗边，这种感觉很奇妙，仿佛两个时空的直接在互相对望，但是最深切的感觉就是时间过的很快，三年好像真的很快，对于我来说高中的记忆是最深刻的，有很多重要的记忆，高中有一些玩的好的女生，让我记忆深刻，一起打游戏，一起聊天，可是当时年轻，错过了很多事情，错过了很多事情，自己总是不能在勇敢一点，是不是生活就会不一样呢，这谁说的清楚了，也只能想一想，笑一笑，成为饭后的一点笑意，</p><h4 id="–-1"><a href="#–-1" class="headerlink" title="–"></a>–</h4><p>​我觉得人总是很奇怪，有时候希望希望自己一个人，有时候呢又希望能有一些朋友，觉得周围太吵闹了，想出去看看，又会觉的太孤单了，要是有个人聊聊天就好了，人总是会患得患失，无法珍惜当下，又害怕明天，但是人总会长大的，没有人可以一直陪着你，终究还是的靠自己去创，去自己生活，但是无论生活怎么样，人总是要有一些盼头，去做自己希望做的事情，是什么，我也不知道，到现在我也没找到，到现在我打工赚钱为了什么，买更多好吃的，好看的，好玩的，我不知道，但是人生真的得有盼头，很迷茫，希望能在以后的生活，发现，去改变我这灰暗的生活。</p><h4 id="–-2"><a href="#–-2" class="headerlink" title="–"></a>–</h4><p>​今日骑行感悟</p><p>​这个周末的晚上11点半去骑行了，也不知道是以一个什么样的心理出去的，可能就是感觉应该去做点什么，随便骑下，然后就回来，头脑一热，洗了个澡，就出发了，我找了一个小黄车，没有看地图，没有看目标，带着耳机当时就想单纯的向前骑行，那天晚上很舒服，微风吹过，路上寥寥几人，那天晚上很黑，骑过马路，我好像进入了公园，骑行在小路上，当我看到周围的风景，我知道我停不下来，我已经被前面未知且美丽的风景吸引，这种感觉一直驱使我向前骑行，直到很久我才停下，才发现我已经走了好远，已经离家很远，其实我总在想，在骑一点我就回去，今天还要早点休息，但是我想知道前面到底还有什么，最后停下来才发现已经走了好远，但我知道我是不可能回去的，同样的路我在骑回去，会变的枯燥且乏味，而且会让我很累，所以我觉得，围着起点绕一个圆圈，继续向前骑行，直到回到起点，于是我打开地图，继续向前骑行，继续向着未知地带的探索，直到我回到了家，一共骑了10几公里，但我并不会感觉很累，反而在回想，是不是当时走错了路，走另一条路会不会风景更好更近了，骑行完已经00：30了，骑行差不多1个小时左右，感悟颇深</p><p>​当你出发时，是以一种什么样的心态出发，目标在哪，方向在哪，过程是怎么样的，周围是什么样的，这些我都不知道，一切都是未知的时候，你会发现，好像骑行好像不一样了，有一种力量会驱使你前行，让你忘掉疲惫，向前而行，如果一但你什么都知道了，好像又不一样了</p><p>​在骑行的过程中，我身在了一个桥上，好像很长很长，骑了好久都没有看到尽头，当时就在想：这桥到底有多长，桥的尽头是什么，但是我知道只要我向前骑行，我一定要把这个桥骑完，我要加快速度了，然后我轻而易举的完成了，当我下桥时只想，这桥真长，仿佛在骑行的过程中已经给自己定了一个小目标，当我骑到这个桥的尽头时，我会很高兴，相当于完成一个小目标，但是对于人生的目标是什么，要完成什么样的目标我才会高兴，要怎么前进才能去完成它，我无从得知，仿佛身处在一片沼泽地，任何动静都不会泛起一丝涟漪</p><p>​这就是我骑行中所受到的感悟，至少过程是快乐的，至于结果是什么已经不重要了</p><p>​在我骑行中时候会有一桥，虽然看你不到桥的尽头但是隐隐约约能看到对岸，所有我会努力的骑到对面，直到抵达为止，怎么说了，我觉得这是一个目标，一个小目标，骑行中未知的感受，和抵达目的的兴奋，当让我觉得有趣，但是当人生的目录越来越大，就可能为看不到终点，一直都是重复的路而懈怠，所有对应人生，我们到底应该在什么阶段订什么样的目录，才会让自己的人生精彩，让自己快乐，这一直都是困扰我的问题，希望可以完成人生，完成所有目标</p><h4 id="–-3"><a href="#–-3" class="headerlink" title="–"></a>–</h4><p>​不知道从什么时候开始，我觉得上班没有意义，枯燥乏味却并不快乐，可能是为了自己得到的某样东西把，对于我来说可能休息也没有意义，就好像一句歌词：从出生的那天起，我就待在一个人的房间里，对休息有时候感觉还不如上班，至少好像做个了某些东西，也不知道从什么时候开始，打游戏似乎成了唯一能做的事情，唯一能获取快乐的方式可能就是看一下网上的视频，看看别人打游戏或者生活的方式，其实总是在想，如何让自己的人生更有意义，辞掉工作，去做一场说走就走的旅行，那能让我快乐吗，我不知道，但我知道的是，这样做的代价一定很大，不知道从什么时候开始，我变得越来越抠门了，可能一个月的工作对于我来说，已经可以过的很舒服，但是我好像就是不能花出去，我好像不会花钱了，对于我来说30左右的都是豪华大餐了，甚至有时候好像几块钱都不太愿意去花，我不知道为什么，我明明可以活的很舒服，但是却过的折磨难受，还是吃着一样的泡面，可能只是在想，尽可能多攒一点钱，说不定那天就被辞退了，不知道从什么时候开始，我好像什么都不敢尝试了，对于很多没有接触过的东西，也并没有像之前一样的渴望了，之前总在想，想去学打篮球，想去学弹吉他，想去健身找一个好的教练，或者其他很多很多，但是我好像什么都没做，一方面是想着自己都这么大了，学这些东西还有机会吗，还学的进去吗，另一方面是想着这些东西开销肯定很大，我感觉我不太能吃的消，所以对于自己我不知道改如何改变，可能对于我来说只是缺乏某个目标，可能像很多人一样，买车买房结婚，可以做完了这一些你真的会快乐吗，买了房子你会很快乐吗，买了车子你会很快乐吗，结了婚你会很快乐吗，我无从得知，这些事情我都没有做过，可能也许会快乐把，可能我发现我并不是一个行动派，自己总是想得多缺做得少，除了每天的两点一线，好像什么都不太想接触了，虽然空余时间还蛮多的，但是什么都不想做，但是每天有很急，我不知道我在急什么，希望快点到公司，希望快点回家，希望快点洗完澡，可以洗完澡之后了，做在电脑前，发呆，发现什么都做不了，什么都没得做，自己又不想学习，那你这么着急回来干嘛，我也不知道，最后也只能去打游戏，过完着慌慌忙忙的一天，我不太理解我为什么会怎样做，但是也没什么办法，而且我总是回去害怕一些东西，我害怕地铁会坐过，害怕快到11点了，需要睡觉，要不然每天工作状态不太行，害怕老板，害怕周日，害怕时间，好像什么时候做得都不体面，也不知道是工作以后就这样了，还是一直都是这样，我知道我的话太多了，是因为我是一个话痨，如果有个朋友在一起，我可能会一直说话找话题，但是现实我确实一言不发，甚至一天说不了一句话，可能是我性格如此吧，网上有一句话是这样说的：回首过往，年过三十，一事无成。</p><p>​对于自己，对于人生希望能做出改变，不在深陷泥潭</p><h4 id="–-4"><a href="#–-4" class="headerlink" title="–"></a>–</h4><p>​对于我看到得：“欲买桂花同载酒，终不似，少年游”这句话来说，我想和朋友一起喝酒，买了喜欢的东西，可以早就没有了以前的感觉，大家也都不年轻了，不可能在像以前一样放肆自己了，我们都回不到从前了，也许小时候的我们确实很美好，又是一年秋季，我们变了又变，树叶掉了又掉，人生无法重来，少年游，唉，至少我们也有过这一段不错的回忆，只是我们坐在这老树旁，枫叶飘落，我们举杯，秋风吹过，夕阳西下，我们一起望着远方，一起感叹的人生，“欲买桂花同载酒，终不似，少年游”</p><h4 id="–-5"><a href="#–-5" class="headerlink" title="–"></a>–</h4><p>​希望我以后可以，上班必有小黄车，过马路必是绿灯，坐地铁地铁刚到，做一点小小的快乐</p><h4 id="–-6"><a href="#–-6" class="headerlink" title="–"></a>–</h4><p>​欲买桂花同载酒 终不似 少年游# 杜牧《秋夕》</p><p><img src="/images/test9.jpg" alt="故乡"></p><p><img src="/images/test10.jpg" alt="故乡"></p><p><img src="/images/test11.jpg" alt="故乡"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>生活</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>聊天</tag>
       
     </tags>
     
@@ -154,31 +179,6 @@
   
   
   <entry>
-    <title>即兴而写</title>
-    <link href="/2021/06/10/%E5%8D%9A%E5%AE%A2-%E5%8D%B3%E5%85%B4%E8%80%8C%E5%86%99/"/>
-    <url>/2021/06/10/%E5%8D%9A%E5%AE%A2-%E5%8D%B3%E5%85%B4%E8%80%8C%E5%86%99/</url>
-    
-    <content type="html"><![CDATA[<h4 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h4><p>​对于我的童年很模糊，很多记忆都记不清楚了，我的童年似乎不太好但是也还可以，那时候没有电脑手机也很少，在村里大家都会出来逛，家家户户都有小孩，很热闹，以前很喜欢过年，人很多很热闹，觉得过年很快乐，过年的那天晚上可以玩通宵，我记得有一年，很晚，还在放烟花，那一年的烟花很大，仿佛伸手就能触摸，给我一种很恍惚，时间交错的感觉，后面的过年生活就越来越平淡了，时间过的很快，一转眼20年就过去了，长大的时间总是很快</p><h4 id="–"><a href="#–" class="headerlink" title="–"></a>–</h4><p>​对于我来说的话，朋友是人生中最重要的东西，但是我失去了，年轻的时候脾气很暴躁，总是控制不住自己，总是觉得自己已经做得足够好了，但是伤害了自己的朋友，我对自己很失望，最后联系就越来越少了，其实越长大，才发现朋友的重要性，发现其实找一个能玩得来的朋友太难了，人生总是很多遗憾，总是会后悔，有一句话说的话，青春总是遗憾的，有几个好朋友对于我的生活真的太重要了，直到现在才明白，太晚了，在高中时，有一种感觉特别深刻，我在高一的时候在窗边望着高三教室的窗边，我在高三的窗边望着高一的窗边，这种感觉很奇妙，仿佛两个时空的直接在互相对望，但是最深切的感觉就是时间过的很快，三年好像真的很快，对于我来说高中的记忆是最深刻的，有很多重要的记忆，高中有一些玩的好的女生，让我记忆深刻，一起打游戏，一起聊天，可是当时年轻，错过了很多事情，错过了很多事情，自己总是不能在勇敢一点，是不是生活就会不一样呢，这谁说的清楚了，也只能想一想，笑一笑，成为饭后的一点笑意，</p><h4 id="–-1"><a href="#–-1" class="headerlink" title="–"></a>–</h4><p>​我觉得人总是很奇怪，有时候希望希望自己一个人，有时候呢又希望能有一些朋友，觉得周围太吵闹了，想出去看看，又会觉的太孤单了，要是有个人聊聊天就好了，人总是会患得患失，无法珍惜当下，又害怕明天，但是人总会长大的，没有人可以一直陪着你，终究还是的靠自己去创，去自己生活，但是无论生活怎么样，人总是要有一些盼头，去做自己希望做的事情，是什么，我也不知道，到现在我也没找到，到现在我打工赚钱为了什么，买更多好吃的，好看的，好玩的，我不知道，但是人生真的得有盼头，很迷茫，希望能在以后的生活，发现，去改变我这灰暗的生活。</p><h4 id="–-2"><a href="#–-2" class="headerlink" title="–"></a>–</h4><p>​今日骑行感悟</p><p>​这个周末的晚上11点半去骑行了，也不知道是以一个什么样的心理出去的，可能就是感觉应该去做点什么，随便骑下，然后就回来，头脑一热，洗了个澡，就出发了，我找了一个小黄车，没有看地图，没有看目标，带着耳机当时就想单纯的向前骑行，那天晚上很舒服，微风吹过，路上寥寥几人，那天晚上很黑，骑过马路，我好像进入了公园，骑行在小路上，当我看到周围的风景，我知道我停不下来，我已经被前面未知且美丽的风景吸引，这种感觉一直驱使我向前骑行，直到很久我才停下，才发现我已经走了好远，已经离家很远，其实我总在想，在骑一点我就回去，今天还要早点休息，但是我想知道前面到底还有什么，最后停下来才发现已经走了好远，但我知道我是不可能回去的，同样的路我在骑回去，会变的枯燥且乏味，而且会让我很累，所以我觉得，围着起点绕一个圆圈，继续向前骑行，直到回到起点，于是我打开地图，继续向前骑行，继续向着未知地带的探索，直到我回到了家，一共骑了10几公里，但我并不会感觉很累，反而在回想，是不是当时走错了路，走另一条路会不会风景更好更近了，骑行完已经00：30了，骑行差不多1个小时左右，感悟颇深</p><p>​当你出发时，是以一种什么样的心态出发，目标在哪，方向在哪，过程是怎么样的，周围是什么样的，这些我都不知道，一切都是未知的时候，你会发现，好像骑行好像不一样了，有一种力量会驱使你前行，让你忘掉疲惫，向前而行，如果一但你什么都知道了，好像又不一样了</p><p>​在骑行的过程中，我身在了一个桥上，好像很长很长，骑了好久都没有看到尽头，当时就在想：这桥到底有多长，桥的尽头是什么，但是我知道只要我向前骑行，我一定要把这个桥骑完，我要加快速度了，然后我轻而易举的完成了，当我下桥时只想，这桥真长，仿佛在骑行的过程中已经给自己定了一个小目标，当我骑到这个桥的尽头时，我会很高兴，相当于完成一个小目标，但是对于人生的目标是什么，要完成什么样的目标我才会高兴，要怎么前进才能去完成它，我无从得知，仿佛身处在一片沼泽地，任何动静都不会泛起一丝涟漪</p><p>​这就是我骑行中所受到的感悟，至少过程是快乐的，至于结果是什么已经不重要了</p><p>​在我骑行中时候会有一桥，虽然看你不到桥的尽头但是隐隐约约能看到对岸，所有我会努力的骑到对面，直到抵达为止，怎么说了，我觉得这是一个目标，一个小目标，骑行中未知的感受，和抵达目的的兴奋，当让我觉得有趣，但是当人生的目录越来越大，就可能为看不到终点，一直都是重复的路而懈怠，所有对应人生，我们到底应该在什么阶段订什么样的目录，才会让自己的人生精彩，让自己快乐，这一直都是困扰我的问题，希望可以完成人生，完成所有目标</p><h4 id="–-3"><a href="#–-3" class="headerlink" title="–"></a>–</h4><p>​不知道从什么时候开始，我觉得上班没有意义，枯燥乏味却并不快乐，可能是为了自己得到的某样东西把，对于我来说可能休息也没有意义，就好像一句歌词：从出生的那天起，我就待在一个人的房间里，对休息有时候感觉还不如上班，至少好像做个了某些东西，也不知道从什么时候开始，打游戏似乎成了唯一能做的事情，唯一能获取快乐的方式可能就是看一下网上的视频，看看别人打游戏或者生活的方式，其实总是在想，如何让自己的人生更有意义，辞掉工作，去做一场说走就走的旅行，那能让我快乐吗，我不知道，但我知道的是，这样做的代价一定很大，不知道从什么时候开始，我变得越来越抠门了，可能一个月的工作对于我来说，已经可以过的很舒服，但是我好像就是不能花出去，我好像不会花钱了，对于我来说30左右的都是豪华大餐了，甚至有时候好像几块钱都不太愿意去花，我不知道为什么，我明明可以活的很舒服，但是却过的折磨难受，还是吃着一样的泡面，可能只是在想，尽可能多攒一点钱，说不定那天就被辞退了，不知道从什么时候开始，我好像什么都不敢尝试了，对于很多没有接触过的东西，也并没有像之前一样的渴望了，之前总在想，想去学打篮球，想去学弹吉他，想去健身找一个好的教练，或者其他很多很多，但是我好像什么都没做，一方面是想着自己都这么大了，学这些东西还有机会吗，还学的进去吗，另一方面是想着这些东西开销肯定很大，我感觉我不太能吃的消，所以对于自己我不知道改如何改变，可能对于我来说只是缺乏某个目标，可能像很多人一样，买车买房结婚，可以做完了这一些你真的会快乐吗，买了房子你会很快乐吗，买了车子你会很快乐吗，结了婚你会很快乐吗，我无从得知，这些事情我都没有做过，可能也许会快乐把，可能我发现我并不是一个行动派，自己总是想得多缺做得少，除了每天的两点一线，好像什么都不太想接触了，虽然空余时间还蛮多的，但是什么都不想做，但是每天有很急，我不知道我在急什么，希望快点到公司，希望快点回家，希望快点洗完澡，可以洗完澡之后了，做在电脑前，发呆，发现什么都做不了，什么都没得做，自己又不想学习，那你这么着急回来干嘛，我也不知道，最后也只能去打游戏，过完着慌慌忙忙的一天，我不太理解我为什么会怎样做，但是也没什么办法，而且我总是回去害怕一些东西，我害怕地铁会坐过，害怕快到11点了，需要睡觉，要不然每天工作状态不太行，害怕老板，害怕周日，害怕时间，好像什么时候做得都不体面，也不知道是工作以后就这样了，还是一直都是这样，我知道我的话太多了，是因为我是一个话痨，如果有个朋友在一起，我可能会一直说话找话题，但是现实我确实一言不发，甚至一天说不了一句话，可能是我性格如此吧，网上有一句话是这样说的：回首过往，年过三十，一事无成。</p><p>​对于自己，对于人生希望能做出改变，不在深陷泥潭</p><h4 id="–-4"><a href="#–-4" class="headerlink" title="–"></a>–</h4><p>​对于我看到得：“欲买桂花同载酒，终不似，少年游”这句话来说，我想和朋友一起喝酒，买了喜欢的东西，可以早就没有了以前的感觉，大家也都不年轻了，不可能在像以前一样放肆自己了，我们都回不到从前了，也许小时候的我们确实很美好，又是一年秋季，我们变了又变，树叶掉了又掉，人生无法重来，少年游，唉，至少我们也有过这一段不错的回忆，只是我们坐在这老树旁，枫叶飘落，我们举杯，秋风吹过，夕阳西下，我们一起望着远方，一起感叹的人生，“欲买桂花同载酒，终不似，少年游”</p><h4 id="–-5"><a href="#–-5" class="headerlink" title="–"></a>–</h4><p>​希望我以后可以，上班必有小黄车，过马路必是绿灯，坐地铁地铁刚到，做一点小小的快乐</p><h4 id="–-6"><a href="#–-6" class="headerlink" title="–"></a>–</h4><p>​欲买桂花同载酒 终不似 少年游# 杜牧《秋夕》</p><p><img src="/images/test9.jpg" alt="故乡"></p><p><img src="/images/test10.jpg" alt="故乡"></p><p><img src="/images/test11.jpg" alt="故乡"></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>生活</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>聊天</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>随手摘抄</title>
     <link href="/2021/06/10/%E5%8D%9A%E5%AE%A2-%E6%B5%81%E8%A8%80%E8%AF%AD%E5%8F%A5/"/>
     <url>/2021/06/10/%E5%8D%9A%E5%AE%A2-%E6%B5%81%E8%A8%80%E8%AF%AD%E5%8F%A5/</url>
@@ -229,31 +229,6 @@
   
   
   <entry>
-    <title>问题大全</title>
-    <link href="/2021/06/10/%E5%8D%9A%E5%AE%A2-%E9%97%AE%E9%A2%98%E5%A4%A7%E5%85%A8/"/>
-    <url>/2021/06/10/%E5%8D%9A%E5%AE%A2-%E9%97%AE%E9%A2%98%E5%A4%A7%E5%85%A8/</url>
-    
-    <content type="html"><![CDATA[<p>这篇帖子会发一些问题和一些解决方案，也会进行日常的更新，把我自己在工作中日常碰到的一些问题和解决方案发给大家，进行参考，有问题也可以进行留言</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>运维</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>学习问题</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>测试文章</title>
     <link href="/2021/06/10/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
     <url>/2021/06/10/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
@@ -271,6 +246,31 @@
     <tags>
       
       <tag>原创</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>问题大全</title>
+    <link href="/2021/06/10/%E5%8D%9A%E5%AE%A2-%E9%97%AE%E9%A2%98%E5%A4%A7%E5%85%A8/"/>
+    <url>/2021/06/10/%E5%8D%9A%E5%AE%A2-%E9%97%AE%E9%A2%98%E5%A4%A7%E5%85%A8/</url>
+    
+    <content type="html"><![CDATA[<p>这篇帖子会发一些问题和一些解决方案，也会进行日常的更新，把我自己在工作中日常碰到的一些问题和解决方案发给大家，进行参考，有问题也可以进行留言</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>运维</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习问题</tag>
       
     </tags>
     
