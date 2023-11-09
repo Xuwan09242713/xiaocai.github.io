@@ -3,8 +3,15 @@ custom_js:
   - //cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js  #/APlayer#/APlayer依赖
   - //cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js  #/APlayer依赖
   - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/qipao.js #头部上升气泡 
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxuehua.js # 小雪花飘落 
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js # 鼠标点击出字 
+
 # 指定自定义 .css 文件路径，用法和 custom_js 相同
 # The usage is the same as custom_js
 custom_css:
   - /css/diy/shubiao.css #鼠标指针
   - //cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css   #/APlayer依赖 
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css # 头部打字机颜色效果渐变 
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/css/daziyanse.css# 头部打字机颜色 
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色 
+  - //cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css# 鼠标指针 
