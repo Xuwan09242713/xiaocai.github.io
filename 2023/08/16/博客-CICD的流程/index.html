@@ -16,12 +16,12 @@
   <meta name="author" content="小菜">
   <meta name="keywords" content="">
   
-    <meta name="description" content="CICD12345678910111213141516171819# 流程部署1.jenkins服务的部署2.gitlab的服务的部署3.仓库连接方式和网址的连接方式4.构建的方式，普通构建和流水线构建5.自动化流程的构建，钩子wevhook的搭建# 插件的下载						-- 后续有插件进行补充1.publish-over-ssh				# ssh功能插件2.git-plugin					# g">
+    <meta name="description" content="CICD12345678910111213141516171819# 流程部署11.jenkins服务的部署2.gitlab的服务的部署3.仓库连接方式和网址的连接方式4.构建的方式，普通构建和流水线构建5.自动化流程的构建，钩子wevhook的搭建# 插件的下载						-- 后续有插件进行补充1.publish-over-ssh				# ssh功能插件2.git-plugin					#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CICD的详细流程">
 <meta property="og:url" content="https://xiaocai.icu/2023/08/16/%E5%8D%9A%E5%AE%A2-CICD%E7%9A%84%E6%B5%81%E7%A8%8B/index.html">
 <meta property="og:site_name" content="从前很慢">
-<meta property="og:description" content="CICD12345678910111213141516171819# 流程部署1.jenkins服务的部署2.gitlab的服务的部署3.仓库连接方式和网址的连接方式4.构建的方式，普通构建和流水线构建5.自动化流程的构建，钩子wevhook的搭建# 插件的下载						-- 后续有插件进行补充1.publish-over-ssh				# ssh功能插件2.git-plugin					# g">
+<meta property="og:description" content="CICD12345678910111213141516171819# 流程部署11.jenkins服务的部署2.gitlab的服务的部署3.仓库连接方式和网址的连接方式4.构建的方式，普通构建和流水线构建5.自动化流程的构建，钩子wevhook的搭建# 插件的下载						-- 后续有插件进行补充1.publish-over-ssh				# ssh功能插件2.git-plugin					#">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xiaocai.icu/images/jenkins1.png">
 <meta property="og:image" content="https://xiaocai.icu/images/jenkins2.png">
@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://xiaocai.icu/images/jenkins19.png">
 <meta property="og:image" content="https://xiaocai.icu/images/jenkins20.png">
 <meta property="article:published_time" content="2023-08-16T07:08:20.000Z">
-<meta property="article:modified_time" content="2023-08-18T02:04:28.556Z">
+<meta property="article:modified_time" content="2023-12-08T02:38:00.733Z">
 <meta property="article:author" content="小菜">
 <meta property="article:tag" content="学习">
 <meta name="twitter:card" content="summary_large_image">
@@ -337,7 +337,7 @@
             
               <div class="markdown-body">
                 
-                <h3 id="CICD"><a href="#CICD" class="headerlink" title="CICD"></a>CICD</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 流程部署</span><br>1.jenkins服务的部署<br>2.gitlab的服务的部署<br>3.仓库连接方式和网址的连接方式<br>4.构建的方式，普通构建和流水线构建<br>5.自动化流程的构建，钩子wevhook的搭建<br><br><span class="hljs-comment"># 插件的下载						-- 后续有插件进行补充</span><br>1.publish-over-ssh				<span class="hljs-comment"># ssh功能插件</span><br>2.git-plugin					<span class="hljs-comment"># git-plugin</span><br>3.Kubernetes CLI Plugin			<span class="hljs-comment"># kubectl功能插件，运用到k8s可以下载</span><br>4.Generic Webhook Trigger		<span class="hljs-comment"># 触发器、构建参数，Webhook触发器</span><br>5.git lab		<span class="hljs-comment"># 触发器	 GitLab模块是用于与GitLab进行集成的插件</span><br>6.Parameterized Trigger	<span class="hljs-comment"># （参数化触发器）：这是Jenkins插件中的一个用于实现构建参数化的插件，可以在构建任务执行时动态传递一些参数，以适应不同的构建需求。</span><br>7.Git Parameter		<span class="hljs-comment"># （Git参数）：这是Jenkins插件中的一个用于从Git仓库中获取分支列表和提交记录的插件，可以用于在构建任务执行时选择Git仓库中的特定分支或提交记录。</span><br>8.Extended Choice Parameter <span class="hljs-comment"># （扩展选择参数）：这是Jenkins插件中的一个用于实现更丰富选择参数的插件，可以提供多种选择形式（如单选、多选、下拉列表、复选框等），以满足不同的选择需求。</span><br>9.Pipeline		<span class="hljs-comment"># 流水线构建项目</span><br>10.gitlab Hook plugin	<span class="hljs-comment"># 钩子</span><br>11.gitlab plugin<br></code></pre></td></tr></table></figure>
+                <h3 id="CICD"><a href="#CICD" class="headerlink" title="CICD"></a>CICD</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 流程部署1</span><br>1.jenkins服务的部署<br>2.gitlab的服务的部署<br>3.仓库连接方式和网址的连接方式<br>4.构建的方式，普通构建和流水线构建<br>5.自动化流程的构建，钩子wevhook的搭建<br><br><span class="hljs-comment"># 插件的下载						-- 后续有插件进行补充</span><br>1.publish-over-ssh				<span class="hljs-comment"># ssh功能插件</span><br>2.git-plugin					<span class="hljs-comment"># git-plugin</span><br>3.Kubernetes CLI Plugin			<span class="hljs-comment"># kubectl功能插件，运用到k8s可以下载</span><br>4.Generic Webhook Trigger		<span class="hljs-comment"># 触发器、构建参数，Webhook触发器</span><br>5.git lab		<span class="hljs-comment"># 触发器	 GitLab模块是用于与GitLab进行集成的插件</span><br>6.Parameterized Trigger	<span class="hljs-comment"># （参数化触发器）：这是Jenkins插件中的一个用于实现构建参数化的插件，可以在构建任务执行时动态传递一些参数，以适应不同的构建需求。</span><br>7.Git Parameter		<span class="hljs-comment"># （Git参数）：这是Jenkins插件中的一个用于从Git仓库中获取分支列表和提交记录的插件，可以用于在构建任务执行时选择Git仓库中的特定分支或提交记录。</span><br>8.Extended Choice Parameter <span class="hljs-comment"># （扩展选择参数）：这是Jenkins插件中的一个用于实现更丰富选择参数的插件，可以提供多种选择形式（如单选、多选、下拉列表、复选框等），以满足不同的选择需求。</span><br>9.Pipeline		<span class="hljs-comment"># 流水线构建项目</span><br>10.gitlab Hook plugin	<span class="hljs-comment"># 钩子</span><br>11.gitlab plugin<br></code></pre></td></tr></table></figure>
 
 
 
