@@ -528,7 +528,7 @@ function initializePlayer() {
     }  
 }  
 
- <script>
+ 
 function savePlayerState() {  
     var state = {  
         isPlaying: playerInstance.isPlaying(),  
@@ -537,6 +537,7 @@ function savePlayerState() {
     localStorage.setItem('playerState', JSON.stringify(state));  
 }
 
+<script>
 function restorePlayerState() {  
     var savedState = localStorage.getItem('playerState');  
     if (savedState) {  
