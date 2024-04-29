@@ -502,66 +502,6 @@ setInterval("createtime()", 250);
 <!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
-  
-// 在你的JavaScript文件中  
-var playerInstance = null;  
-  
-function initializePlayer() {  
-    var aplayerElement = document.getElementById('aplayer');  
-    if (aplayerElement) {  
-        playerInstance = new APlayer({  
-            element: aplayerElement,  
-            narrow: false,  
-            autoplay: false, // 设置为false，因为我们将手动控制播放  
-            music: {  
-                title: '歌曲名',  
-                artist: '歌手名',  
-                url: '歌曲URL',  
-                pic: '封面图片URL'  
-                // ... 其他歌曲信息  
-            }  
-        });  
-  
-        // 添加事件监听器来保存播放状态  
-        playerInstance.on('play', savePlayerState);  
-        playerInstance.on('pause', savePlayerState);  
-        playerInstance.on('stop', savePlayerState);  
-        playerInstance.on('ended', savePlayerState);  
-    }  
-}  
-
- 
-function savePlayerState() {  
-    var state = {  
-        isPlaying: playerInstance.isPlaying(),  
-        currentTime: playerInstance.currentTime()  
-    };  
-    localStorage.setItem('playerState', JSON.stringify(state));  
-}
-
-<script>
-function restorePlayerState() {  
-    var savedState = localStorage.getItem('playerState');  
-    if (savedState) {  
-        var state = JSON.parse(savedState);  
-        if (state.isPlaying) {  
-            playerInstance.play();  
-            playerInstance.currentTime(state.currentTime);  
-        } else {  
-            playerInstance.pause();  
-            // 如果需要，可以设置播放器的当前时间  
-            // playerInstance.currentTime(state.currentTime);  
-        }  
-    }  
-}  
-  
-// 在页面加载完成后初始化播放器和恢复状态  
-document.addEventListener('DOMContentLoaded', function() {  
-    initializePlayer();  
-    restorePlayerState();  
-});
-</script>
-<div id="aplayer"></div>
 
   
 
