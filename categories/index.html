@@ -313,10 +313,10 @@
     
       
       
-        <a href="/2021/06/10/%E5%8D%9A%E5%AE%A2-%E5%8D%B3%E5%85%B4%E8%80%8C%E5%86%99/" title="即兴而写"
+        <a href="/2021/06/10/%E5%8D%9A%E5%AE%A2-%E6%88%91%E7%9A%84%E6%AD%A3%E5%BC%8F%E5%B7%A5%E4%BD%9C/" title="我的正式工作"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">即兴而写</span>
+          <span class="category-post">我的正式工作</span>
         </a>
       
     
@@ -326,15 +326,6 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">喜欢歌曲的歌词</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/06/10/%E5%8D%9A%E5%AE%A2-%E6%88%91%E7%9A%84%E6%AD%A3%E5%BC%8F%E5%B7%A5%E4%BD%9C/" title="我的正式工作"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">我的正式工作</span>
         </a>
       
     
@@ -353,6 +344,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">博饼体验</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/06/10/%E5%8D%9A%E5%AE%A2-%E5%8D%B3%E5%85%B4%E8%80%8C%E5%86%99/" title="即兴而写"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">即兴而写</span>
         </a>
       
     
@@ -400,19 +400,19 @@
     
       
       
-        <a href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" title="运维命令"
+        <a href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%84%9A%E6%9C%AC/" title="运维脚本"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">运维命令</span>
+          <span class="category-post">运维脚本</span>
         </a>
       
     
       
       
-        <a href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%84%9A%E6%9C%AC/" title="运维脚本"
+        <a href="/2023/08/07/%E5%8D%9A%E5%AE%A2-%E8%BF%90%E7%BB%B4%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" title="运维命令"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">运维脚本</span>
+          <span class="category-post">运维命令</span>
         </a>
       
     
@@ -690,6 +690,65 @@ setInterval("createtime()", 250);
 <!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
+  
+// 在你的JavaScript文件中  
+var playerInstance = null;  
+  
+function initializePlayer() {  
+    var aplayerElement = document.getElementById('aplayer');  
+    if (aplayerElement) {  
+        playerInstance = new APlayer({  
+            element: aplayerElement,  
+            narrow: false,  
+            autoplay: false, // 设置为false，因为我们将手动控制播放  
+            music: {  
+                title: '歌曲名',  
+                artist: '歌手名',  
+                url: '歌曲URL',  
+                pic: '封面图片URL'  
+                // ... 其他歌曲信息  
+            }  
+        });  
+  
+        // 添加事件监听器来保存播放状态  
+        playerInstance.on('play', savePlayerState);  
+        playerInstance.on('pause', savePlayerState);  
+        playerInstance.on('stop', savePlayerState);  
+        playerInstance.on('ended', savePlayerState);  
+    }  
+}  
+
+ <script>
+function savePlayerState() {  
+    var state = {  
+        isPlaying: playerInstance.isPlaying(),  
+        currentTime: playerInstance.currentTime()  
+    };  
+    localStorage.setItem('playerState', JSON.stringify(state));  
+}
+
+function restorePlayerState() {  
+    var savedState = localStorage.getItem('playerState');  
+    if (savedState) {  
+        var state = JSON.parse(savedState);  
+        if (state.isPlaying) {  
+            playerInstance.play();  
+            playerInstance.currentTime(state.currentTime);  
+        } else {  
+            playerInstance.pause();  
+            // 如果需要，可以设置播放器的当前时间  
+            // playerInstance.currentTime(state.currentTime);  
+        }  
+    }  
+}  
+  
+// 在页面加载完成后初始化播放器和恢复状态  
+document.addEventListener('DOMContentLoaded', function() {  
+    initializePlayer();  
+    restorePlayerState();  
+});
+</script>
+<div id="aplayer"></div>
 
   
 
@@ -699,6 +758,6 @@ setInterval("createtime()", 250);
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
 
-<script src="/js/your-script-file.js"></script>
+
 
 
